@@ -1,16 +1,17 @@
-%global ipc-version 0.1.3
-%global upstream_version 3.e-bf2
- 
-Name:           i3
-Version:        3.e
+%global real_name i3
+%global bugfix_release bf2
+%global upstream_version 3.e-%{bugfix_release}
+
+Name:           i3-wm
+Version:        3.e.%{bugfix_release}
 Release:        %mkrel 1
 Summary:        Improved tiling window manager
 License:        BSD
 Group:          User Interface/Desktops
 URL:            http://i3.zekjur.net
 
-Source0:        http://i3.zekjur.net/downloads/%{name}-%{upstream_version}.tar.bz2
-Source1:        %{name}-logo.svg
+Source0:        http://i3.zekjur.net/downloads/%{real_name}-%{upstream_version}.tar.bz2
+Source1:        %{real_name}-logo.svg
 
 BuildRoot:      %{_tmppath}/%{name}-%{version}-%{release}-root-%(%{__id_u} -n)
 BuildRequires:  libev-devel
@@ -43,7 +44,7 @@ developers.
 
 
 %package doc
-Summary:        %{name} documentation
+Summary:        i3 window manager documentation
 Group:          Documentation
 BuildRequires:  doxygen
 BuildArch:      noarch
@@ -54,8 +55,7 @@ Asciidoc and doxygen documentations for i3.
 
 
 %prep
-%setup -q -n %{name}-%{upstream_version}
-
+%setup -q -n %{real_name}-%{upstream_version}
 sed \
     -e 's|CFLAGS += -Wall|CFLAGS += %{optflags}|g' \
     -e 's|CFLAGS += -pipe|CFLAGS += -I/usr/include/libev |g' \
@@ -67,10 +67,10 @@ sed \
 
 %build
 make %{?_smp_mflags} V=1
-
-cd man; make %{?_smp_mflags} V=1
-cd ../docs; make %{?_smp_mflags} V=1
-
+cd man
+make %{?_smp_mflags} V=1
+cd ../docs
+make %{?_smp_mflags} V=1
 cd ..
 doxygen pseudo-doc.doxygen
 mv pseudo-doc/html pseudo-doc/doxygen
@@ -98,19 +98,16 @@ rm -rf %{buildroot}
 %files
 %defattr(-,root,root,-)
 %doc GOALS LICENSE RELEASE-NOTES-%{upstream_version}
-%{_bindir}/%{name}*
-%{_includedir}/%{name}/*
-%dir %{_sysconfdir}/%{name}/
-%config(noreplace) %{_sysconfdir}/%{name}/config
-%config(noreplace) %{_sysconfdir}/%{name}/welcome
-%{_datadir}/xsessions/%{name}.desktop
-%{_mandir}/man*/%{name}*
+%{_bindir}/%{real_name}*
+%{_includedir}/%{real_name}/*
+%dir %{_sysconfdir}/%{real_name}/
+%config(noreplace) %{_sysconfdir}/%{real_name}/config
+%config(noreplace) %{_sysconfdir}/%{real_name}/welcome
+%{_datadir}/xsessions/%{real_name}.desktop
+%{_mandir}/man*/%{real_name}*
 %{_datadir}/pixmaps/i3-logo.svg
 
 
 %files doc
 %defattr(-,root,root,-)
 %doc docs/*.{html,png} pseudo-doc/doxygen/
-
-
-%changelog
