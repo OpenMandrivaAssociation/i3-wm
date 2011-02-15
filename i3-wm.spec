@@ -7,7 +7,7 @@ Version:        3.e.%{bugfix_release}
 Release:        %mkrel 1
 Summary:        Improved tiling window manager
 License:        BSD
-Group:          User Interface/Desktops
+Group:          System/X11
 URL:            http://i3.zekjur.net
 
 Source0:        http://i3.zekjur.net/downloads/%{real_name}-%{upstream_version}.tar.bz2
@@ -45,7 +45,7 @@ developers.
 
 %package doc
 Summary:        i3 window manager documentation
-Group:          Documentation
+Group:          System/X11
 BuildRequires:  doxygen
 BuildArch:      noarch
 Requires:       %{name} = %{version}-%{release}
