@@ -13,7 +13,7 @@ URL:            http://i3.zekjur.net
 Source0:        http://i3.zekjur.net/downloads/%{real_name}-%{upstream_version}.tar.bz2
 Source1:        %{real_name}-logo.svg
 
-BuildRoot:      %{_tmppath}/%{name}-%{version}-%{release}-root-%(%{__id_u} -n)
+BuildRoot:      %{_tmppath}/%{name}-%{version}-%{release}-root
 BuildRequires:  libev-devel
 BuildRequires:  libxkbfile-devel
 BuildRequires:  libx11-devel
@@ -24,6 +24,7 @@ BuildRequires:  bison
 BuildRequires:  flex
 BuildRequires:  asciidoc
 BuildRequires:  graphviz
+BuildRequires:  bzip2
 
 Requires:       rxvt-unicode
 Requires:       x11-apps
