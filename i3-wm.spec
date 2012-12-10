@@ -1,10 +1,12 @@
 %global real_name i3
 %global bugfix_release bf2
-%global upstream_version 3.e-%{bugfix_release}
+#% global upstream_version 3.e-%{bugfix_release}
+%global upstream_version 4.3
 
 Name:           i3-wm
-Version:        3.e.%{bugfix_release}
-Release:        %mkrel 1
+#Version:        3.e.%{bugfix_release}
+Version:        4.3
+Release:        1
 Summary:        Improved tiling window manager
 License:        BSD
 Group:          System/X11
@@ -12,19 +14,26 @@ URL:            http://i3.zekjur.net
 
 Source0:        http://i3.zekjur.net/downloads/%{real_name}-%{upstream_version}.tar.bz2
 Source1:        %{real_name}-logo.svg
+source2:				.abf.yml
+patch0:					i3-4.3.libev.patch
 
-BuildRoot:      %{_tmppath}/%{name}-%{version}-%{release}-root
-BuildRequires:  libev-devel
-BuildRequires:  libxkbfile-devel
-BuildRequires:  libx11-devel
-BuildRequires:  libyajl-devel
-BuildRequires:  libxcb-devel
+BuildRequires:  pkgconfig(libev)
+BuildRequires:  pkgconfig(xkbfile)
+BuildRequires:  pkgconfig(x11)
+BuildRequires:  pkgconfig(yajl)
+BuildRequires:  pkgconfig(xcb)
 BuildRequires:  xcb-util-devel
 BuildRequires:  bison
 BuildRequires:  flex
 BuildRequires:  asciidoc
 BuildRequires:  graphviz
 BuildRequires:  bzip2
+buildrequires:	pkgconfig(xcb-keysyms)
+buildrequires:	pkgconfig(xcb-icccm)
+buildrequires:	pkgconfig(pango)
+buildrequires:	pkgconfig(pangocairo)
+buildrequires:	pkgconfig(libstartup-notification-1.0)
+buildrequires:	pkgconfig(xcursor)
 
 Requires:       rxvt-unicode
 Requires:       x11-apps
@@ -57,6 +66,7 @@ Asciidoc and doxygen documentations for i3.
 
 %prep
 %setup -q -n %{real_name}-%{upstream_version}
+%patch0 -p1 -b .libev
 sed \
     -e 's|CFLAGS += -Wall|CFLAGS += %{optflags}|g' \
     -e 's|CFLAGS += -pipe|CFLAGS += -I/usr/include/libev |g' \
@@ -78,7 +88,6 @@ mv pseudo-doc/html pseudo-doc/doxygen
 
 
 %install
-rm -rf %{buildroot}
 
 make install \
      DESTDIR=%{buildroot} \
@@ -89,26 +98,34 @@ install -Dpm0644 man/*.1 \
         %{buildroot}/%{_mandir}/man1/
 
 mkdir -p %{buildroot}/%{_datadir}/pixmaps/
-install -Dpm0644 %{_sourcedir}/i3-logo.svg \
+install -Dpm0644 %{SOURCE1} \
         %{buildroot}/%{_datadir}/pixmaps/
-
-%clean
-rm -rf %{buildroot}
-
 
 %files
 %defattr(-,root,root,-)
-%doc GOALS LICENSE RELEASE-NOTES-%{upstream_version}
+%doc LICENSE RELEASE-NOTES-%{upstream_version}
 %{_bindir}/%{real_name}*
 %{_includedir}/%{real_name}/*
 %dir %{_sysconfdir}/%{real_name}/
 %config(noreplace) %{_sysconfdir}/%{real_name}/config
-%config(noreplace) %{_sysconfdir}/%{real_name}/welcome
+%config(noreplace) %{_sysconfdir}/%{real_name}/config.keycodes
 %{_datadir}/xsessions/%{real_name}.desktop
 %{_mandir}/man*/%{real_name}*
-%{_datadir}/pixmaps/i3-logo.svg
+%{_datadir}/pixmaps/%{real_name}-logo.svg
+%{_datadir}/applications/%{real_name}.desktop
 
 
 %files doc
 %defattr(-,root,root,-)
 %doc docs/*.{html,png} pseudo-doc/doxygen/
+
+
+%changelog
+* Fri Feb 18 2011 Joao Victor Duarte Martins <jvdm@mandriva.com.br> 3.e.bf2-1mdv2011.0
++ Revision: 638328
+- fix BuildRoot and add bzip2 to BuildRequires
+- fix group tag
+- fix package name and rename spec file
+- First initial commit.
+- create i3-wm
+
