@@ -6,7 +6,7 @@
 Name:           i3-wm
 #Version:        3.e.%{bugfix_release}
 Version:        4.3
-Release:        1
+Release:        2
 Summary:        Improved tiling window manager
 License:        BSD
 Group:          System/X11
