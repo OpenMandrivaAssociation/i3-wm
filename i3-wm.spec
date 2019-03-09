@@ -5,14 +5,14 @@
 
 Name:           i3-wm
 #Version:        3.e.%{bugfix_release}
-Version:        4.3
-Release:        2
+Version:        4.16.1
+Release:        1
 Summary:        Improved tiling window manager
 License:        BSD
 Group:          System/X11
-URL:            http://i3.zekjur.net
+URL:            http://i3wm.org/
 
-Source0:        http://i3.zekjur.net/downloads/%{real_name}-%{upstream_version}.tar.bz2
+Source0:        http://i3wm.org/downloads/i3-%{version}.tar.bz2
 Source1:        %{real_name}-logo.svg
 source2:				.abf.yml
 patch0:					i3-4.3.libev.patch
@@ -22,23 +22,32 @@ BuildRequires:  pkgconfig(xkbfile)
 BuildRequires:  pkgconfig(x11)
 BuildRequires:  pkgconfig(yajl)
 BuildRequires:  pkgconfig(xcb)
-BuildRequires:  xcb-util-devel
+BuildRequires:  pkgconfig(xcb-util)
+BuildRequires:  x11-proto-devel
+BuildRequires:  xcb-util-wm-devel
+BuildRequires:  pkgconfig(libev)
 BuildRequires:  bison
+BuildRequires:  doxygen
 BuildRequires:  flex
 BuildRequires:  asciidoc
 BuildRequires:  graphviz
 BuildRequires:  bzip2
-buildrequires:	pkgconfig(xcb-keysyms)
-buildrequires:	pkgconfig(xcb-icccm)
-buildrequires:	pkgconfig(pango)
-buildrequires:	pkgconfig(pangocairo)
-buildrequires:	pkgconfig(libstartup-notification-1.0)
-buildrequires:	pkgconfig(xcursor)
+BuildRequires:  pkgconfig(xcb-cursor)
+Buildrequires:	pkgconfig(xcb-keysyms)
+Buildrequires:	pkgconfig(xcb-icccm)
+Buildrequires:	pkgconfig(pango)
+Buildrequires:	pkgconfig(pangocairo)
+Buildrequires:	pkgconfig(libstartup-notification-1.0)
+BuildRequires:  pkgconfig(libpcre)
+Buildrequires:	pkgconfig(xcursor)
+BuildRequires:  pkgconfig(xkbcommon)
+BuildRequires:  pkgconfig(xkbcommon-x11)
+BuildRequires:  pkgconfig(yajl)
 
 Requires:       rxvt-unicode
 Requires:       x11-apps
-Suggests:       dmenu
-Suggests:	i3-doc
+Recommends:     dmenu
+Recommedns:     i3-doc
 
 %description
 i3 is a tiling window manager, completely written from scratch.
