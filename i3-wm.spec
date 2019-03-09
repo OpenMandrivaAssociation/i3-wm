@@ -17,32 +17,32 @@ Source1:        %{real_name}-logo.svg
 source2:				.abf.yml
 #patch0:					i3-4.3.libev.patch
 
-BuildRequires:  pkgconfig(libev)
-BuildRequires:  pkgconfig(xkbfile)
-BuildRequires:  pkgconfig(x11)
-BuildRequires:  pkgconfig(yajl)
-BuildRequires:  pkgconfig(xcb)
-BuildRequires:  pkgconfig(xcb-util)
-BuildRequires:  x11-proto-devel
-BuildRequires:  xcb-util-wm-devel
-BuildRequires:  pkgconfig(libev)
-BuildRequires:  bison
-BuildRequires:  doxygen
-BuildRequires:  flex
-BuildRequires:  asciidoc
-BuildRequires:  graphviz
-BuildRequires:  bzip2
-BuildRequires:  pkgconfig(xcb-cursor)
-Buildrequires:	pkgconfig(xcb-keysyms)
-Buildrequires:	pkgconfig(xcb-icccm)
-Buildrequires:	pkgconfig(pango)
-Buildrequires:	pkgconfig(pangocairo)
-Buildrequires:	pkgconfig(libstartup-notification-1.0)
-BuildRequires:  pkgconfig(libpcre)
+BuildRequires: pkgconfig(libev)
+BuildRequires: pkgconfig(xkbfile)
+BuildRequires: pkgconfig(x11)
+BuildRequires: pkgconfig(yajl)
+BuildRequires: pkgconfig(xcb)
+BuildRequires: pkgconfig(xcb-util)
+BuildRequires: x11-proto-devel
+BuildRequires: xcb-util-wm-devel
+BuildRequires: pkgconfig(libev)
+BuildRequires: bison
+BuildRequires: doxygen
+BuildRequires: flex
+BuildRequires: asciidoc
+BuildRequires: graphviz
+BuildRequires: bzip2
+BuildRequires: pkgconfig(xcb-cursor)
+Buildrequires: pkgconfig(xcb-keysyms)
+Buildrequires: pkgconfig(xcb-icccm)
+Buildrequires: pkgconfig(pango)
+Buildrequires: pkgconfig(pangocairo)
+Buildrequires: pkgconfig(libstartup-notification-1.0)
+BuildRequires: pkgconfig(libpcre)
 Buildrequires:	pkgconfig(xcursor)
-BuildRequires:  pkgconfig(xkbcommon)
-BuildRequires:  pkgconfig(xkbcommon-x11)
-BuildRequires:  pkgconfig(yajl)
+BuildRequires: pkgconfig(xkbcommon)
+BuildRequires: pkgconfig(xkbcommon-x11)
+BuildRequires: pkgconfig(yajl)
 
 Requires:       rxvt-unicode
 Requires:       x11-apps
@@ -74,41 +74,31 @@ Asciidoc and doxygen documentations for i3.
 
 
 %prep
-%setup -q -n i3-%{version}
-#patch0 -p1 -b .libev
-#sed \
-#    -e 's|CFLAGS += -Wall|CFLAGS += %{optflags}|g' \
-#    -e 's|CFLAGS += -pipe|CFLAGS += -I/usr/include/libev |g' \
-#    -e 's|CFLAGS += -I/usr/local/include|CFLAGS += -I%{_includedir}|g' \
-#    -e 's|/usr/local/lib|%{_libdir}|g' \
-#    -e 's|.SILENT:||g' \
-#    -i common.mk
-
+%autosetup -p1
 
 %build
-make %{?_smp_mflags} V=1
-cd man
-make %{?_smp_mflags} V=1
-cd ../docs
-make %{?_smp_mflags} V=1
-cd ..
+%configure2_5x
+
+%make_build -C
+
 doxygen pseudo-doc.doxygen
 mv pseudo-doc/html pseudo-doc/doxygen
 
-
 %install
-
-make install \
-     DESTDIR=%{buildroot} \
-     INSTALL="install -p"
+%make_install -C
 
 mkdir -p %{buildroot}/%{_mandir}/man1/
-install -Dpm0644 man/*.1 \
-        %{buildroot}/%{_mandir}/man1/
+install -Dpm0644 man/*.1 %{buildroot}/%{_mandir}/man1/
 
-mkdir -p %{buildroot}/%{_datadir}/pixmaps/
-install -Dpm0644 %{SOURCE1} \
-        %{buildroot}/%{_datadir}/pixmaps/
+%posttrans
+if [ "$1" -eq 1 ]; then
+	if [ -e %{_datadir}/xsessions/31i3.desktop ]; then
+		rm -rf %{_datadir}/xsessions/31i3.desktop
+	fi
+	if [ -e %{_sysconfdir}/X11/dm/Sessions/31i3.desktop ]; then
+		rm -rf %{_sysconfdir}/X11/dm/Sessions/31i3.desktop
+	fi
+fi
 
 %files
 %defattr(-,root,root,-)
