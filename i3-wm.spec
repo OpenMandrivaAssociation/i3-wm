@@ -47,7 +47,7 @@ BuildRequires:  pkgconfig(yajl)
 Requires:       rxvt-unicode
 Requires:       x11-apps
 Recommends:     dmenu
-Recommedns:     i3-doc
+Recommends:     i3-doc
 
 %description
 i3 is a tiling window manager, completely written from scratch.
