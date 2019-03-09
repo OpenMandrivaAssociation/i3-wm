@@ -74,7 +74,7 @@ Asciidoc and doxygen documentations for i3.
 
 
 %prep
-%setup -q -n %{real_name}-%{upstream_version}
+%setup -q -n i3-%{version}
 %patch0 -p1 -b .libev
 sed \
     -e 's|CFLAGS += -Wall|CFLAGS += %{optflags}|g' \
