@@ -74,7 +74,7 @@ Asciidoc and doxygen documentations for i3.
 
 
 %prep
-%autosetup -p1
+%setup -q -n i3-%{name}
 
 %build
 %configure2_5x
