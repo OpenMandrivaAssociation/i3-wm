@@ -15,7 +15,7 @@ URL:            http://i3wm.org/
 Source0:        http://i3wm.org/downloads/i3-%{version}.tar.bz2
 Source1:        %{real_name}-logo.svg
 source2:				.abf.yml
-patch0:					i3-4.3.libev.patch
+#patch0:					i3-4.3.libev.patch
 
 BuildRequires:  pkgconfig(libev)
 BuildRequires:  pkgconfig(xkbfile)
@@ -75,14 +75,14 @@ Asciidoc and doxygen documentations for i3.
 
 %prep
 %setup -q -n i3-%{version}
-%patch0 -p1 -b .libev
-sed \
-    -e 's|CFLAGS += -Wall|CFLAGS += %{optflags}|g' \
-    -e 's|CFLAGS += -pipe|CFLAGS += -I/usr/include/libev |g' \
-    -e 's|CFLAGS += -I/usr/local/include|CFLAGS += -I%{_includedir}|g' \
-    -e 's|/usr/local/lib|%{_libdir}|g' \
-    -e 's|.SILENT:||g' \
-    -i common.mk
+#patch0 -p1 -b .libev
+#sed \
+#    -e 's|CFLAGS += -Wall|CFLAGS += %{optflags}|g' \
+#    -e 's|CFLAGS += -pipe|CFLAGS += -I/usr/include/libev |g' \
+#    -e 's|CFLAGS += -I/usr/local/include|CFLAGS += -I%{_includedir}|g' \
+#    -e 's|/usr/local/lib|%{_libdir}|g' \
+#    -e 's|.SILENT:||g' \
+#    -i common.mk
 
 
 %build
