@@ -80,13 +80,13 @@ Asciidoc and doxygen documentations for i3.
 %build
 %configure2_5x
 
-%make_build -C
+%make_build -C *-openmandriva-linux-gnu*
 
 doxygen pseudo-doc.doxygen
 mv pseudo-doc/html pseudo-doc/doxygen
 
 %install
-%make_install -C
+%make_install -C *-openmandriva-linux-gnu*
 
 mkdir -p %{buildroot}/%{_mandir}/man1/
 install -Dpm0644 man/*.1 %{buildroot}/%{_mandir}/man1/
