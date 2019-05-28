@@ -5,40 +5,50 @@
 
 Name:           i3-wm
 #Version:        3.e.%{bugfix_release}
-Version:        4.3
-Release:        2
+Version:        4.16.1
+Release:        1
 Summary:        Improved tiling window manager
 License:        BSD
 Group:          System/X11
-URL:            http://i3.zekjur.net
+URL:            http://i3wm.org/
 
-Source0:        http://i3.zekjur.net/downloads/%{real_name}-%{upstream_version}.tar.bz2
+Source0:        http://i3wm.org/downloads/i3-%{version}.tar.bz2
 Source1:        %{real_name}-logo.svg
 source2:				.abf.yml
-patch0:					i3-4.3.libev.patch
+Patch1:		fix-ev.patch
 
-BuildRequires:  pkgconfig(libev)
-BuildRequires:  pkgconfig(xkbfile)
-BuildRequires:  pkgconfig(x11)
-BuildRequires:  pkgconfig(yajl)
-BuildRequires:  pkgconfig(xcb)
-BuildRequires:  xcb-util-devel
-BuildRequires:  bison
-BuildRequires:  flex
-BuildRequires:  asciidoc
-BuildRequires:  graphviz
-BuildRequires:  bzip2
-buildrequires:	pkgconfig(xcb-keysyms)
-buildrequires:	pkgconfig(xcb-icccm)
-buildrequires:	pkgconfig(pango)
-buildrequires:	pkgconfig(pangocairo)
-buildrequires:	pkgconfig(libstartup-notification-1.0)
-buildrequires:	pkgconfig(xcursor)
+BuildRequires: pkgconfig(libev)
+BuildRequires: pkgconfig(xkbfile)
+BuildRequires: pkgconfig(x11)
+BuildRequires: pkgconfig(yajl)
+BuildRequires: pkgconfig(xcb)
+BuildRequires: pkgconfig(xcb-util)
+BuildRequires: x11-proto-devel
+BuildRequires: xcb-util-wm-devel
+BuildRequires: pkgconfig(libev)
+BuildRequires: bison
+BuildRequires: doxygen
+BuildRequires: flex
+BuildRequires: asciidoc
+BuildRequires: graphviz
+BuildRequires: bzip2
+BuildRequires: pkgconfig(xcb-cursor)
+Buildrequires: pkgconfig(xcb-keysyms)
+Buildrequires: pkgconfig(xcb-icccm)
+BuildRequires: pkgconfig(xcb-xrm)
+Buildrequires: pkgconfig(pango)
+Buildrequires: pkgconfig(pangocairo)
+Buildrequires: pkgconfig(libstartup-notification-1.0)
+BuildRequires: pkgconfig(libpcre)
+Buildrequires: pkgconfig(xcursor)
+BuildRequires: pkgconfig(xkbcommon)
+BuildRequires: pkgconfig(xkbcommon-x11)
+BuildRequires: pkgconfig(yajl)
 
 Requires:       rxvt-unicode
 Requires:       x11-apps
-Suggests:       dmenu
-Suggests:	i3-doc
+Recommends:     dmenu
+Recommends:     i3-doc
 
 %description
 i3 is a tiling window manager, completely written from scratch.
@@ -65,54 +75,46 @@ Asciidoc and doxygen documentations for i3.
 
 
 %prep
-%setup -q -n %{real_name}-%{upstream_version}
-%patch0 -p1 -b .libev
-sed \
-    -e 's|CFLAGS += -Wall|CFLAGS += %{optflags}|g' \
-    -e 's|CFLAGS += -pipe|CFLAGS += -I/usr/include/libev |g' \
-    -e 's|CFLAGS += -I/usr/local/include|CFLAGS += -I%{_includedir}|g' \
-    -e 's|/usr/local/lib|%{_libdir}|g' \
-    -e 's|.SILENT:||g' \
-    -i common.mk
-
+%setup -q -n i3-%{version}
+%autopatch -p1
 
 %build
-make %{?_smp_mflags} V=1
-cd man
-make %{?_smp_mflags} V=1
-cd ../docs
-make %{?_smp_mflags} V=1
-cd ..
+%configure2_5x
+
+%make_build -C *-openmandriva-linux-gnu*
+
 doxygen pseudo-doc.doxygen
 mv pseudo-doc/html pseudo-doc/doxygen
 
-
 %install
-
-make install \
-     DESTDIR=%{buildroot} \
-     INSTALL="install -p"
+%make_install -C *-openmandriva-linux-gnu*
 
 mkdir -p %{buildroot}/%{_mandir}/man1/
-install -Dpm0644 man/*.1 \
-        %{buildroot}/%{_mandir}/man1/
+install -Dpm0644 man/*.1 %{buildroot}/%{_mandir}/man1/
 
-mkdir -p %{buildroot}/%{_datadir}/pixmaps/
-install -Dpm0644 %{SOURCE1} \
-        %{buildroot}/%{_datadir}/pixmaps/
+%posttrans
+if [ "$1" -eq 1 ]; then
+	if [ -e %{_datadir}/xsessions/31i3.desktop ]; then
+		rm -rf %{_datadir}/xsessions/31i3.desktop
+	fi
+	if [ -e %{_sysconfdir}/X11/dm/Sessions/31i3.desktop ]; then
+		rm -rf %{_sysconfdir}/X11/dm/Sessions/31i3.desktop
+	fi
+fi
 
 %files
 %defattr(-,root,root,-)
-%doc LICENSE RELEASE-NOTES-%{upstream_version}
+%doc LICENSE
 %{_bindir}/%{real_name}*
 %{_includedir}/%{real_name}/*
 %dir %{_sysconfdir}/%{real_name}/
 %config(noreplace) %{_sysconfdir}/%{real_name}/config
 %config(noreplace) %{_sysconfdir}/%{real_name}/config.keycodes
-%{_datadir}/xsessions/%{real_name}.desktop
+%{_datadir}/xsessions/*.desktop
 %{_mandir}/man*/%{real_name}*
-%{_datadir}/pixmaps/%{real_name}-logo.svg
-%{_datadir}/applications/%{real_name}.desktop
+#{_datadir}/pixmaps/i3*
+%{_datadir}/applications/*.desktop
+%exclude %{_docdir}/i3/*
 
 
 %files doc
