@@ -110,10 +110,11 @@ fi
 %dir %{_sysconfdir}/%{real_name}/
 %config(noreplace) %{_sysconfdir}/%{real_name}/config
 %config(noreplace) %{_sysconfdir}/%{real_name}/config.keycodes
-%{_datadir}/xsessions/%{real_name}.desktop
+%{_datadir}/xsessions/*.desktop
 %{_mandir}/man*/%{real_name}*
 #{_datadir}/pixmaps/i3*
-%{_datadir}/applications/%{real_name}.desktop
+%{_datadir}/applications/*.desktop
+%exclude %{_docdir}/%{name}/
 
 
 %files doc
