@@ -15,7 +15,8 @@ URL:            http://i3wm.org/
 Source0:        http://i3wm.org/downloads/i3-%{version}.tar.bz2
 Source1:        %{real_name}-logo.svg
 source2:				.abf.yml
-patch0:					i3-4.3.libev.patch
+#patch0:					i3-4.3.libev.patch
+Patch1:		fix-ev.patch
 
 BuildRequires: pkgconfig(libev)
 BuildRequires: pkgconfig(xkbfile)
