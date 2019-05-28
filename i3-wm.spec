@@ -1,3 +1,5 @@
+%global __requires_exclude perl\\(AnyEvent::I3\\)
+
 %global real_name i3
 %global bugfix_release bf2
 #% global upstream_version 3.e-%{bugfix_release}
