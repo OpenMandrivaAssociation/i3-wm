@@ -114,7 +114,7 @@ fi
 %{_mandir}/man*/%{real_name}*
 #{_datadir}/pixmaps/i3*
 %{_datadir}/applications/*.desktop
-%exclude %{_docdir}/%{name}/*
+%exclude %{_docdir}/i3/*
 
 
 %files doc
