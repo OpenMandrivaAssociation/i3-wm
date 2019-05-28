@@ -112,7 +112,7 @@ fi
 %config(noreplace) %{_sysconfdir}/%{real_name}/config.keycodes
 %{_datadir}/xsessions/%{real_name}.desktop
 %{_mandir}/man*/%{real_name}*
-%{_datadir}/pixmaps/i3*
+#{_datadir}/pixmaps/i3*
 %{_datadir}/applications/%{real_name}.desktop
 
 
