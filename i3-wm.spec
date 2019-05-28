@@ -15,7 +15,6 @@ URL:            http://i3wm.org/
 Source0:        http://i3wm.org/downloads/i3-%{version}.tar.bz2
 Source1:        %{real_name}-logo.svg
 source2:				.abf.yml
-#patch0:					i3-4.3.libev.patch
 Patch1:		fix-ev.patch
 
 BuildRequires: pkgconfig(libev)
@@ -105,7 +104,7 @@ fi
 
 %files
 %defattr(-,root,root,-)
-%doc LICENSE RELEASE-NOTES-%{upstream_version}
+%doc LICENSE
 %{_bindir}/%{real_name}*
 %{_includedir}/%{real_name}/*
 %dir %{_sysconfdir}/%{real_name}/
@@ -113,7 +112,7 @@ fi
 %config(noreplace) %{_sysconfdir}/%{real_name}/config.keycodes
 %{_datadir}/xsessions/%{real_name}.desktop
 %{_mandir}/man*/%{real_name}*
-%{_datadir}/pixmaps/%{real_name}-logo.svg
+%{_datadir}/pixmaps/i3*
 %{_datadir}/applications/%{real_name}.desktop
 
 
