@@ -46,6 +46,7 @@ Buildrequires: pkgconfig(xcursor)
 BuildRequires: pkgconfig(xkbcommon)
 BuildRequires: pkgconfig(xkbcommon-x11)
 BuildRequires: pkgconfig(yajl)
+BuildRequires: xmlto
 
 Requires:       rxvt-unicode
 Requires:       x11-apps
