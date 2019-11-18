@@ -2,12 +2,10 @@
 
 %global real_name i3
 %global bugfix_release bf2
-#% global upstream_version 3.e-%{bugfix_release}
 %global upstream_version 4.3
 
 Name:           i3-wm
-#Version:        3.e.%{bugfix_release}
-Version:        4.17
+Version:        4.17.1
 Release:        1
 Summary:        Improved tiling window manager
 License:        BSD
@@ -83,7 +81,7 @@ Asciidoc and doxygen documentations for i3.
 %autopatch -p1
 
 %build
-%configure2_5x
+%configure
 
 %make_build -C *-openmandriva-linux-gnu*
 
