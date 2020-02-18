@@ -2,17 +2,17 @@
 
 %global real_name i3
 %global bugfix_release bf2
-%global upstream_version 4.3
+%global upstream_version 4.18
 
 Name:           i3-wm
-Version:        4.17.1
+Version:        4.18
 Release:        1
 Summary:        Improved tiling window manager
 License:        BSD
 Group:          System/X11
 URL:            http://i3wm.org/
 
-Source0:        http://i3wm.org/downloads/i3-%{version}.tar.bz2
+Source0:        http://i3wm.org/downloads/%{real_name}-%{version}.tar.bz2
 Source1:        %{real_name}-logo.svg
 source2:				.abf.yml
 Patch1:		fix-ev.patch
@@ -77,7 +77,7 @@ Asciidoc and doxygen documentations for i3.
 
 
 %prep
-%setup -q -n i3-%{version}
+%setup -q -n %{real_name}-%{version}
 %autopatch -p1
 
 %build
