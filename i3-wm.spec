@@ -5,7 +5,7 @@
 %global upstream_version 4.18
 
 Name:           i3-wm
-Version:        4.18.3
+Version:        4.19
 Release:        1
 Summary:        Improved tiling window manager
 License:        BSD
@@ -23,6 +23,7 @@ BuildRequires: pkgconfig(x11)
 BuildRequires: pkgconfig(yajl)
 BuildRequires: pkgconfig(xcb)
 BuildRequires: pkgconfig(xcb-util)
+BuildRequires: meson
 BuildRequires: x11-proto-devel
 BuildRequires: xcb-util-wm-devel
 BuildRequires: pkgconfig(libev)
@@ -81,15 +82,15 @@ Asciidoc and doxygen documentations for i3.
 %autopatch -p1
 
 %build
-%configure
+%meson
 
-%make_build -C *-openmandriva-linux-gnu*
+%meson_build -C *-openmandriva-linux-gnu*
 
 doxygen pseudo-doc.doxygen
 mv pseudo-doc/html pseudo-doc/doxygen
 
 %install
-%make_install -C *-openmandriva-linux-gnu*
+%meson_install -C *-openmandriva-linux-gnu*
 
 mkdir -p %{buildroot}/%{_mandir}/man1/
 install -Dpm0644 man/*.1 %{buildroot}/%{_mandir}/man1/
