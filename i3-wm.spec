@@ -12,7 +12,7 @@ License:        BSD
 Group:          System/X11
 URL:            http://i3wm.org/
 
-Source0:        http://i3wm.org/downloads/%{real_name}-%{version}.tar.bz2
+Source0:        http://i3wm.org/downloads/%{real_name}-%{version}.tar.xz
 Source1:        %{real_name}-logo.svg
 source2:				.abf.yml
 Patch1:		fix-ev.patch
