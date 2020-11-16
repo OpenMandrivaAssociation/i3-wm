@@ -34,14 +34,14 @@ BuildRequires: asciidoc
 BuildRequires: graphviz
 BuildRequires: bzip2
 BuildRequires: pkgconfig(xcb-cursor)
-Buildrequires: pkgconfig(xcb-keysyms)
-Buildrequires: pkgconfig(xcb-icccm)
+BuildRequires: pkgconfig(xcb-keysyms)
+BuildRequires: pkgconfig(xcb-icccm)
 BuildRequires: pkgconfig(xcb-xrm)
-Buildrequires: pkgconfig(pango)
-Buildrequires: pkgconfig(pangocairo)
-Buildrequires: pkgconfig(libstartup-notification-1.0)
+BuildRequires: pkgconfig(pango)
+BuildRequires: pkgconfig(pangocairo)
+BuildRequires: pkgconfig(libstartup-notification-1.0)
 BuildRequires: pkgconfig(libpcre)
-Buildrequires: pkgconfig(xcursor)
+BuildRequires: pkgconfig(xcursor)
 BuildRequires: pkgconfig(xkbcommon)
 BuildRequires: pkgconfig(xkbcommon-x11)
 BuildRequires: pkgconfig(yajl)
@@ -84,13 +84,13 @@ Asciidoc and doxygen documentations for i3.
 %build
 %meson
 
-%meson_build -C *-openmandriva-linux-gnu*
+%meson_build
 
 doxygen pseudo-doc.doxygen
 mv pseudo-doc/html pseudo-doc/doxygen
 
 %install
-%meson_install -C *-openmandriva-linux-gnu*
+%meson_install
 
 mkdir -p %{buildroot}/%{_mandir}/man1/
 install -Dpm0644 man/*.1 %{buildroot}/%{_mandir}/man1/
