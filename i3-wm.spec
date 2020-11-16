@@ -46,6 +46,7 @@ BuildRequires: pkgconfig(xkbcommon)
 BuildRequires: pkgconfig(xkbcommon-x11)
 BuildRequires: pkgconfig(yajl)
 BuildRequires: xmlto
+BuildRequires: perl-ExtUtils-MakeMaker
 
 Requires:       rxvt-unicode
 Requires:       x11-apps
