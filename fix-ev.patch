@@ -1,108 +1,120 @@
-diff -uNr i3-4.13/i3bar/src/child.c i3-4.13p/i3bar/src/child.c
---- i3-4.13/i3bar/src/child.c	2016-11-08 20:54:01.000000000 +0200
-+++ i3-4.13p/i3bar/src/child.c	2016-11-09 22:41:01.978557831 +0200
-@@ -20,7 +20,7 @@
- #include <string.h>
- #include <errno.h>
+diff -uraN i3-4.19/i3bar/src/child.c omv-i3-4.19/i3bar/src/child.c
+--- i3-4.19/i3bar/src/child.c	2020-11-15 18:23:01.522988800 +0100
++++ omv-i3-4.19/i3bar/src/child.c	2020-12-24 15:53:51.790080326 +0100
+@@ -12,7 +12,7 @@
+ 
  #include <err.h>
--#include <ev.h>
-+#include <libev/ev.h>
- #include <yajl/yajl_common.h>
- #include <yajl/yajl_parse.h>
- #include <yajl/yajl_version.h>
-diff -uNr i3-4.13/i3bar/src/ipc.c i3-4.13p/i3bar/src/ipc.c
---- i3-4.13/i3bar/src/ipc.c	2016-11-08 20:54:01.000000000 +0200
-+++ i3-4.13p/i3bar/src/ipc.c	2016-11-09 22:43:14.677613713 +0200
-@@ -18,7 +18,7 @@
- #include <sys/socket.h>
- #include <sys/un.h>
- #include <i3/ipc.h>
--#include <ev.h>
-+#include <libev/ev.h>
- #ifdef I3_ASAN_ENABLED
- #include <sanitizer/lsan_interface.h>
- #endif
-diff -uNr i3-4.13/i3bar/src/main.c i3-4.13p/i3bar/src/main.c
---- i3-4.13/i3bar/src/main.c	2016-11-08 20:54:01.000000000 +0200
-+++ i3-4.13p/i3bar/src/main.c	2016-11-09 22:41:42.485574805 +0200
-@@ -13,7 +13,7 @@
- #include <unistd.h>
- #include <stdlib.h>
  #include <errno.h>
+-#include <ev.h>
++#include <libev/ev.h>
+ #include <fcntl.h>
+ #include <paths.h>
+ #include <signal.h>
+diff -uraN i3-4.19/i3bar/src/ipc.c omv-i3-4.19/i3bar/src/ipc.c
+--- i3-4.19/i3bar/src/ipc.c	2020-11-15 18:23:01.522988800 +0100
++++ omv-i3-4.19/i3bar/src/ipc.c	2020-12-24 15:54:28.895701425 +0100
+@@ -10,7 +10,7 @@
+ #include "common.h"
+ 
+ #include <errno.h>
+-#include <ev.h>
++#include <libev/ev.h>
+ #include <i3/ipc.h>
+ #include <stdint.h>
+ #include <stdlib.h>
+diff -uraN i3-4.19/i3bar/src/main.c omv-i3-4.19/i3bar/src/main.c
+--- i3-4.19/i3bar/src/main.c	2020-11-15 18:23:01.522988800 +0100
++++ omv-i3-4.19/i3bar/src/main.c	2020-12-24 15:54:51.184255909 +0100
+@@ -7,7 +7,7 @@
+  */
+ #include "common.h"
+ 
 -#include <ev.h>
 +#include <libev/ev.h>
  #include <getopt.h>
  #include <glob.h>
- 
-diff -uNr i3-4.13/i3bar/src/parse_json_header.c i3-4.13p/i3bar/src/parse_json_header.c
---- i3-4.13/i3bar/src/parse_json_header.c	2016-11-08 20:54:01.000000000 +0200
-+++ i3-4.13p/i3bar/src/parse_json_header.c	2016-11-09 22:45:58.062424150 +0200
-@@ -20,7 +20,7 @@
- #include <string.h>
- #include <errno.h>
- #include <err.h>
--#include <ev.h>
-+#include <libev/ev.h>
- #include <stdbool.h>
- #include <stdint.h>
- #include <yajl/yajl_common.h>
-diff -uNr i3-4.13/i3bar/src/xcb.c i3-4.13p/i3bar/src/xcb.c
---- i3-4.13/i3bar/src/xcb.c	2016-11-08 20:54:01.000000000 +0200
-+++ i3-4.13p/i3bar/src/xcb.c	2016-11-09 22:43:59.669561231 +0200
-@@ -21,7 +21,7 @@
- #include <fcntl.h>
- #include <string.h>
  #include <i3/ipc.h>
+diff -uraN i3-4.19/i3bar/src/parse_json_header.c omv-i3-4.19/i3bar/src/parse_json_header.c
+--- i3-4.19/i3bar/src/parse_json_header.c	2020-11-15 18:23:01.522988800 +0100
++++ omv-i3-4.19/i3bar/src/parse_json_header.c	2020-12-24 15:55:39.944055976 +0100
+@@ -9,7 +9,7 @@
+  *
+  */
+ #include "common.h"
+-
++#include <libev/ev.h>
+ #include <signal.h>
+ #include <string.h>
+ 
+diff -uraN i3-4.19/i3bar/src/xcb.c omv-i3-4.19/i3bar/src/xcb.c
+--- i3-4.19/i3bar/src/xcb.c	2020-11-15 18:23:01.522988800 +0100
++++ omv-i3-4.19/i3bar/src/xcb.c	2020-12-24 15:56:00.352703014 +0100
+@@ -10,7 +10,7 @@
+ #include "common.h"
+ 
+ #include <err.h>
 -#include <ev.h>
 +#include <libev/ev.h>
- #include <errno.h>
- #include <limits.h>
- #include <err.h>
-diff -uNr i3-4.13/include/ipc.h i3-4.13p/include/ipc.h
---- i3-4.13/include/ipc.h	2016-11-08 20:54:01.000000000 +0200
-+++ i3-4.13p/include/ipc.h	2016-11-09 22:13:18.464166577 +0200
+ #include <i3/ipc.h>
+ #include <stdlib.h>
+ #include <string.h>
+diff -uraN i3-4.19/include/ipc.h omv-i3-4.19/include/ipc.h
+--- i3-4.19/include/ipc.h	2020-11-15 18:23:01.526322100 +0100
++++ omv-i3-4.19/include/ipc.h	2020-12-24 15:56:51.885256198 +0100
 @@ -11,7 +11,7 @@
  
  #include <config.h>
  
 -#include <ev.h>
 +#include <libev/ev.h>
- #include <stdbool.h>
  #include <yajl/yajl_gen.h>
  #include <yajl/yajl_parse.h>
-diff -uNr i3-4.13/src/ipc.c i3-4.13p/src/ipc.c
---- i3-4.13/src/ipc.c	2016-11-08 20:54:01.000000000 +0200
-+++ i3-4.13p/src/ipc.c	2016-11-09 22:08:31.482259287 +0200
-@@ -16,7 +16,7 @@
- #include <sys/un.h>
+ 
+diff -uraN i3-4.19/src/ipc.c omv-i3-4.19/src/ipc.c
+--- i3-4.19/src/ipc.c	2020-11-15 18:23:01.529655200 +0100
++++ omv-i3-4.19/src/ipc.c	2020-12-24 15:57:42.508833808 +0100
+@@ -11,7 +11,7 @@
+ #include "all.h"
+ #include "yajl_utils.h"
+ 
+-#include <ev.h>
++#include <libev/ev.h>
  #include <fcntl.h>
  #include <libgen.h>
+ #include <locale.h>
+diff -uraN i3-4.19/src/main.c omv-i3-4.19/src/main.c
+--- i3-4.19/src/main.c	2020-11-15 18:23:01.529655200 +0100
++++ omv-i3-4.19/src/main.c	2020-12-24 15:58:08.063094646 +0100
+@@ -10,7 +10,7 @@
+ #include "all.h"
+ #include "shmlog.h"
+ 
 -#include <ev.h>
 +#include <libev/ev.h>
- #include <yajl/yajl_gen.h>
- #include <yajl/yajl_parse.h>
- 
-diff -uNr i3-4.13/src/main.c i3-4.13p/src/main.c
---- i3-4.13/src/main.c	2016-11-08 20:54:01.000000000 +0200
-+++ i3-4.13p/src/main.c	2016-11-09 22:39:01.425507886 +0200
-@@ -9,7 +9,7 @@
+ #include <fcntl.h>
+ #include <getopt.h>
+ #include <libgen.h>
+diff -uraN i3-4.19/src/sighandler.c omv-i3-4.19/src/sighandler.c
+--- i3-4.19/src/sighandler.c	2020-11-15 18:23:01.529655200 +0100
++++ omv-i3-4.19/src/sighandler.c	2020-12-24 15:58:33.723341436 +0100
+@@ -6,7 +6,7 @@
+  *
+  */
+ #include "all.h"
+-
++#include <libev/ev.h>
+ #include <signal.h>
+ #include <sys/wait.h>
+ #include <unistd.h>
+diff -uraN i3-4.19/testcases/inject_randr1.5.c omv-i3-4.19/testcases/inject_randr1.5.c
+--- i3-4.19/testcases/inject_randr1.5.c	2020-11-15 18:23:01.532988500 +0100
++++ omv-i3-4.19/testcases/inject_randr1.5.c	2020-12-24 16:05:17.124247380 +0100
+@@ -14,7 +14,7 @@
   */
  #include "all.h"
  
 -#include <ev.h>
 +#include <libev/ev.h>
  #include <fcntl.h>
- #include <sys/types.h>
- #include <sys/socket.h>
-diff -uNr i3-4.13/src/sighandler.c i3-4.13p/src/sighandler.c
---- i3-4.13/src/sighandler.c	2016-11-08 20:54:01.000000000 +0200
-+++ i3-4.13p/src/sighandler.c	2016-11-09 22:40:07.149535011 +0200
-@@ -11,7 +11,7 @@
-  */
- #include "all.h"
- 
--#include <ev.h>
-+#include <libev/ev.h>
- #include <iconv.h>
- #include <signal.h>
- #include <sys/wait.h>
+ #include <getopt.h>
+ #include <libgen.h>
