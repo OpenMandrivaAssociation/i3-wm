@@ -106,3 +106,15 @@ diff -uraN i3-4.19/src/sighandler.c omv-i3-4.19/src/sighandler.c
  #include <signal.h>
  #include <sys/wait.h>
  #include <unistd.h>
+diff -uraN i3-4.19/testcases/inject_randr1.5.c omv-i3-4.19/testcases/inject_randr1.5.c
+--- i3-4.19/testcases/inject_randr1.5.c	2020-11-15 18:23:01.532988500 +0100
++++ omv-i3-4.19/testcases/inject_randr1.5.c	2020-12-24 16:05:17.124247380 +0100
+@@ -14,7 +14,7 @@
+  */
+ #include "all.h"
+ 
+-#include <ev.h>
++#include <libev/ev.h>
+ #include <fcntl.h>
+ #include <getopt.h>
+ #include <libgen.h>
