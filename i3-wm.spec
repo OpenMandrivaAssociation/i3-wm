@@ -5,7 +5,7 @@
 %global upstream_version 4.18
 
 Name:           i3-wm
-Version:        4.19.2
+Version:        4.20
 Release:        1
 Summary:        Improved tiling window manager
 License:        BSD
