@@ -1,6 +1,6 @@
-diff -uraN i3-4.19/i3bar/src/child.c omv-i3-4.19/i3bar/src/child.c
---- i3-4.19/i3bar/src/child.c	2020-11-15 18:23:01.522988800 +0100
-+++ omv-i3-4.19/i3bar/src/child.c	2020-12-24 15:53:51.790080326 +0100
+diff -uNr i3-4.19/i3bar/src/child.c i3-4.19p/i3bar/src/child.c
+--- i3-4.19/i3bar/src/child.c	2020-11-15 19:23:01.522988800 +0200
++++ i3-4.19p/i3bar/src/child.c	2020-12-30 00:11:49.329576757 +0200
 @@ -12,7 +12,7 @@
  
  #include <err.h>
@@ -10,9 +10,9 @@ diff -uraN i3-4.19/i3bar/src/child.c omv-i3-4.19/i3bar/src/child.c
  #include <fcntl.h>
  #include <paths.h>
  #include <signal.h>
-diff -uraN i3-4.19/i3bar/src/ipc.c omv-i3-4.19/i3bar/src/ipc.c
---- i3-4.19/i3bar/src/ipc.c	2020-11-15 18:23:01.522988800 +0100
-+++ omv-i3-4.19/i3bar/src/ipc.c	2020-12-24 15:54:28.895701425 +0100
+diff -uNr i3-4.19/i3bar/src/ipc.c i3-4.19p/i3bar/src/ipc.c
+--- i3-4.19/i3bar/src/ipc.c	2020-11-15 19:23:01.522988800 +0200
++++ i3-4.19p/i3bar/src/ipc.c	2020-12-30 00:12:04.689466057 +0200
 @@ -10,7 +10,7 @@
  #include "common.h"
  
@@ -22,9 +22,9 @@ diff -uraN i3-4.19/i3bar/src/ipc.c omv-i3-4.19/i3bar/src/ipc.c
  #include <i3/ipc.h>
  #include <stdint.h>
  #include <stdlib.h>
-diff -uraN i3-4.19/i3bar/src/main.c omv-i3-4.19/i3bar/src/main.c
---- i3-4.19/i3bar/src/main.c	2020-11-15 18:23:01.522988800 +0100
-+++ omv-i3-4.19/i3bar/src/main.c	2020-12-24 15:54:51.184255909 +0100
+diff -uNr i3-4.19/i3bar/src/main.c i3-4.19p/i3bar/src/main.c
+--- i3-4.19/i3bar/src/main.c	2020-11-15 19:23:01.522988800 +0200
++++ i3-4.19p/i3bar/src/main.c	2020-12-30 00:12:21.497345262 +0200
 @@ -7,7 +7,7 @@
   */
  #include "common.h"
@@ -34,21 +34,9 @@ diff -uraN i3-4.19/i3bar/src/main.c omv-i3-4.19/i3bar/src/main.c
  #include <getopt.h>
  #include <glob.h>
  #include <i3/ipc.h>
-diff -uraN i3-4.19/i3bar/src/parse_json_header.c omv-i3-4.19/i3bar/src/parse_json_header.c
---- i3-4.19/i3bar/src/parse_json_header.c	2020-11-15 18:23:01.522988800 +0100
-+++ omv-i3-4.19/i3bar/src/parse_json_header.c	2020-12-24 15:55:39.944055976 +0100
-@@ -9,7 +9,7 @@
-  *
-  */
- #include "common.h"
--
-+#include <libev/ev.h>
- #include <signal.h>
- #include <string.h>
- 
-diff -uraN i3-4.19/i3bar/src/xcb.c omv-i3-4.19/i3bar/src/xcb.c
---- i3-4.19/i3bar/src/xcb.c	2020-11-15 18:23:01.522988800 +0100
-+++ omv-i3-4.19/i3bar/src/xcb.c	2020-12-24 15:56:00.352703014 +0100
+diff -uNr i3-4.19/i3bar/src/xcb.c i3-4.19p/i3bar/src/xcb.c
+--- i3-4.19/i3bar/src/xcb.c	2020-11-15 19:23:01.522988800 +0200
++++ i3-4.19p/i3bar/src/xcb.c	2020-12-30 00:12:59.172075759 +0200
 @@ -10,7 +10,7 @@
  #include "common.h"
  
@@ -58,9 +46,9 @@ diff -uraN i3-4.19/i3bar/src/xcb.c omv-i3-4.19/i3bar/src/xcb.c
  #include <i3/ipc.h>
  #include <stdlib.h>
  #include <string.h>
-diff -uraN i3-4.19/include/ipc.h omv-i3-4.19/include/ipc.h
---- i3-4.19/include/ipc.h	2020-11-15 18:23:01.526322100 +0100
-+++ omv-i3-4.19/include/ipc.h	2020-12-24 15:56:51.885256198 +0100
+diff -uNr i3-4.19/include/ipc.h i3-4.19p/include/ipc.h
+--- i3-4.19/include/ipc.h	2020-11-15 19:23:01.526322100 +0200
++++ i3-4.19p/include/ipc.h	2020-12-30 00:13:51.082707055 +0200
 @@ -11,7 +11,7 @@
  
  #include <config.h>
@@ -70,9 +58,9 @@ diff -uraN i3-4.19/include/ipc.h omv-i3-4.19/include/ipc.h
  #include <yajl/yajl_gen.h>
  #include <yajl/yajl_parse.h>
  
-diff -uraN i3-4.19/src/ipc.c omv-i3-4.19/src/ipc.c
---- i3-4.19/src/ipc.c	2020-11-15 18:23:01.529655200 +0100
-+++ omv-i3-4.19/src/ipc.c	2020-12-24 15:57:42.508833808 +0100
+diff -uNr i3-4.19/src/ipc.c i3-4.19p/src/ipc.c
+--- i3-4.19/src/ipc.c	2020-11-15 19:23:01.529655200 +0200
++++ i3-4.19p/src/ipc.c	2020-12-30 00:14:47.820307246 +0200
 @@ -11,7 +11,7 @@
  #include "all.h"
  #include "yajl_utils.h"
@@ -82,9 +70,9 @@ diff -uraN i3-4.19/src/ipc.c omv-i3-4.19/src/ipc.c
  #include <fcntl.h>
  #include <libgen.h>
  #include <locale.h>
-diff -uraN i3-4.19/src/main.c omv-i3-4.19/src/main.c
---- i3-4.19/src/main.c	2020-11-15 18:23:01.529655200 +0100
-+++ omv-i3-4.19/src/main.c	2020-12-24 15:58:08.063094646 +0100
+diff -uNr i3-4.19/src/main.c i3-4.19p/src/main.c
+--- i3-4.19/src/main.c	2020-11-15 19:23:01.529655200 +0200
++++ i3-4.19p/src/main.c	2020-12-30 00:15:04.412190909 +0200
 @@ -10,7 +10,7 @@
  #include "all.h"
  #include "shmlog.h"
@@ -94,21 +82,9 @@ diff -uraN i3-4.19/src/main.c omv-i3-4.19/src/main.c
  #include <fcntl.h>
  #include <getopt.h>
  #include <libgen.h>
-diff -uraN i3-4.19/src/sighandler.c omv-i3-4.19/src/sighandler.c
---- i3-4.19/src/sighandler.c	2020-11-15 18:23:01.529655200 +0100
-+++ omv-i3-4.19/src/sighandler.c	2020-12-24 15:58:33.723341436 +0100
-@@ -6,7 +6,7 @@
-  *
-  */
- #include "all.h"
--
-+#include <libev/ev.h>
- #include <signal.h>
- #include <sys/wait.h>
- #include <unistd.h>
-diff -uraN i3-4.19/testcases/inject_randr1.5.c omv-i3-4.19/testcases/inject_randr1.5.c
---- i3-4.19/testcases/inject_randr1.5.c	2020-11-15 18:23:01.532988500 +0100
-+++ omv-i3-4.19/testcases/inject_randr1.5.c	2020-12-24 16:05:17.124247380 +0100
+diff -uNr i3-4.19/testcases/inject_randr1.5.c i3-4.19p/testcases/inject_randr1.5.c
+--- i3-4.19/testcases/inject_randr1.5.c	2020-11-15 19:23:01.532988500 +0200
++++ i3-4.19p/testcases/inject_randr1.5.c	2020-12-30 00:21:41.142467516 +0200
 @@ -14,7 +14,7 @@
   */
  #include "all.h"
@@ -118,3 +94,29 @@ diff -uraN i3-4.19/testcases/inject_randr1.5.c omv-i3-4.19/testcases/inject_rand
  #include <fcntl.h>
  #include <getopt.h>
  #include <libgen.h>
+Index: i3-4.20/include/log.h
+===================================================================
+--- i3-4.20/include/log.h
++++ i3-4.20/include/log.h	2021-10-19 10:09:46.108201397 +0200
+@@ -10,7 +10,7 @@
+ #pragma once
+ 
+ #include <config.h>
+-#include <ev.h>
++#include <libev/ev.h>
+ 
+ /* We will include libi3.h which define its own version of LOG, ELOG.
+  * We want *our* version, so we undef the libi3 one. */
+Index: i3-4.20/src/log.c
+===================================================================
+--- i3-4.20/src/log.c
++++ i3-4.20/src/log.c	2021-10-19 10:10:00.456210721 +0200
+@@ -12,7 +12,7 @@
+ #include "all.h"
+ #include "shmlog.h"
+ 
+-#include <ev.h>
++#include <libev/ev.h>
+ #include <libgen.h>
+ #include <sys/socket.h>
+ #include <sys/un.h>
