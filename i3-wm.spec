@@ -5,7 +5,7 @@
 %global upstream_version 4.18
 
 Name:           i3-wm
-Version:        4.20.1
+Version:        4.21
 Release:        1
 Summary:        Improved tiling window manager
 License:        BSD
@@ -41,6 +41,7 @@ BuildRequires: pkgconfig(pango)
 BuildRequires: pkgconfig(pangocairo)
 BuildRequires: pkgconfig(libstartup-notification-1.0)
 BuildRequires: pkgconfig(libpcre)
+BuildRequires: pkgconfig(libpcre2-8)
 BuildRequires: pkgconfig(xcursor)
 BuildRequires: pkgconfig(xkbcommon)
 BuildRequires: pkgconfig(xkbcommon-x11)
