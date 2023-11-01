@@ -1,3 +1,15 @@
+diff -uraN i3-4.23/i3bar/include/child.h omv-i3-4.23/i3bar/include/child.h
+--- i3-4.23/i3bar/include/child.h	2023-10-29 09:57:51.000000000 +0100
++++ omv-i3-4.23/i3bar/include/child.h	2023-11-01 15:01:10.793124306 +0100
+@@ -11,7 +11,7 @@
+ 
+ #include <config.h>
+ 
+-#include <ev.h>
++#include <libev/ev.h>
+ 
+ #define STDIN_CHUNK_SIZE 1024
+ 
 diff -uraN i3-4.23/i3bar/src/child.c omv-i3-4.23/i3bar/src/child.c
 --- i3-4.23/i3bar/src/child.c	2023-10-29 09:57:51.000000000 +0100
 +++ omv-i3-4.23/i3bar/src/child.c	2023-11-01 14:21:05.319168622 +0100
