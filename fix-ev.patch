@@ -1,8 +1,8 @@
-diff -uNr i3-4.19/i3bar/src/child.c i3-4.19p/i3bar/src/child.c
---- i3-4.19/i3bar/src/child.c	2020-11-15 19:23:01.522988800 +0200
-+++ i3-4.19p/i3bar/src/child.c	2020-12-30 00:11:49.329576757 +0200
-@@ -12,7 +12,7 @@
- 
+diff -uraN i3-4.23/i3bar/src/child.c omv-i3-4.23/i3bar/src/child.c
+--- i3-4.23/i3bar/src/child.c	2023-10-29 09:57:51.000000000 +0100
++++ omv-i3-4.23/i3bar/src/child.c	2023-11-01 14:21:05.319168622 +0100
+@@ -13,7 +13,7 @@
+ #include <ctype.h> /* isspace */
  #include <err.h>
  #include <errno.h>
 -#include <ev.h>
@@ -10,9 +10,9 @@ diff -uNr i3-4.19/i3bar/src/child.c i3-4.19p/i3bar/src/child.c
  #include <fcntl.h>
  #include <paths.h>
  #include <signal.h>
-diff -uNr i3-4.19/i3bar/src/ipc.c i3-4.19p/i3bar/src/ipc.c
---- i3-4.19/i3bar/src/ipc.c	2020-11-15 19:23:01.522988800 +0200
-+++ i3-4.19p/i3bar/src/ipc.c	2020-12-30 00:12:04.689466057 +0200
+diff -uraN i3-4.23/i3bar/src/ipc.c omv-i3-4.23/i3bar/src/ipc.c
+--- i3-4.23/i3bar/src/ipc.c	2023-10-29 09:57:51.000000000 +0100
++++ omv-i3-4.23/i3bar/src/ipc.c	2023-11-01 14:21:18.726168375 +0100
 @@ -10,7 +10,7 @@
  #include "common.h"
  
@@ -22,9 +22,9 @@ diff -uNr i3-4.19/i3bar/src/ipc.c i3-4.19p/i3bar/src/ipc.c
  #include <i3/ipc.h>
  #include <stdint.h>
  #include <stdlib.h>
-diff -uNr i3-4.19/i3bar/src/main.c i3-4.19p/i3bar/src/main.c
---- i3-4.19/i3bar/src/main.c	2020-11-15 19:23:01.522988800 +0200
-+++ i3-4.19p/i3bar/src/main.c	2020-12-30 00:12:21.497345262 +0200
+diff -uraN i3-4.23/i3bar/src/main.c omv-i3-4.23/i3bar/src/main.c
+--- i3-4.23/i3bar/src/main.c	2023-10-29 09:57:51.000000000 +0100
++++ omv-i3-4.23/i3bar/src/main.c	2023-11-01 14:21:30.987168149 +0100
 @@ -7,7 +7,7 @@
   */
  #include "common.h"
@@ -34,9 +34,9 @@ diff -uNr i3-4.19/i3bar/src/main.c i3-4.19p/i3bar/src/main.c
  #include <getopt.h>
  #include <glob.h>
  #include <i3/ipc.h>
-diff -uNr i3-4.19/i3bar/src/xcb.c i3-4.19p/i3bar/src/xcb.c
---- i3-4.19/i3bar/src/xcb.c	2020-11-15 19:23:01.522988800 +0200
-+++ i3-4.19p/i3bar/src/xcb.c	2020-12-30 00:12:59.172075759 +0200
+diff -uraN i3-4.23/i3bar/src/xcb.c omv-i3-4.23/i3bar/src/xcb.c
+--- i3-4.23/i3bar/src/xcb.c	2023-10-29 09:57:51.000000000 +0100
++++ omv-i3-4.23/i3bar/src/xcb.c	2023-11-01 14:21:47.577167843 +0100
 @@ -10,7 +10,7 @@
  #include "common.h"
  
@@ -46,9 +46,9 @@ diff -uNr i3-4.19/i3bar/src/xcb.c i3-4.19p/i3bar/src/xcb.c
  #include <i3/ipc.h>
  #include <stdlib.h>
  #include <string.h>
-diff -uNr i3-4.19/include/ipc.h i3-4.19p/include/ipc.h
---- i3-4.19/include/ipc.h	2020-11-15 19:23:01.526322100 +0200
-+++ i3-4.19p/include/ipc.h	2020-12-30 00:13:51.082707055 +0200
+diff -uraN i3-4.23/include/ipc.h omv-i3-4.23/include/ipc.h
+--- i3-4.23/include/ipc.h	2023-10-29 09:57:51.000000000 +0100
++++ omv-i3-4.23/include/ipc.h	2023-11-01 14:22:20.968167228 +0100
 @@ -11,7 +11,7 @@
  
  #include <config.h>
@@ -58,46 +58,9 @@ diff -uNr i3-4.19/include/ipc.h i3-4.19p/include/ipc.h
  #include <yajl/yajl_gen.h>
  #include <yajl/yajl_parse.h>
  
-diff -uNr i3-4.19/src/ipc.c i3-4.19p/src/ipc.c
---- i3-4.19/src/ipc.c	2020-11-15 19:23:01.529655200 +0200
-+++ i3-4.19p/src/ipc.c	2020-12-30 00:14:47.820307246 +0200
-@@ -11,7 +11,7 @@
- #include "all.h"
- #include "yajl_utils.h"
- 
--#include <ev.h>
-+#include <libev/ev.h>
- #include <fcntl.h>
- #include <libgen.h>
- #include <locale.h>
-diff -uNr i3-4.19/src/main.c i3-4.19p/src/main.c
---- i3-4.19/src/main.c	2020-11-15 19:23:01.529655200 +0200
-+++ i3-4.19p/src/main.c	2020-12-30 00:15:04.412190909 +0200
-@@ -10,7 +10,7 @@
- #include "all.h"
- #include "shmlog.h"
- 
--#include <ev.h>
-+#include <libev/ev.h>
- #include <fcntl.h>
- #include <getopt.h>
- #include <libgen.h>
-diff -uNr i3-4.19/testcases/inject_randr1.5.c i3-4.19p/testcases/inject_randr1.5.c
---- i3-4.19/testcases/inject_randr1.5.c	2020-11-15 19:23:01.532988500 +0200
-+++ i3-4.19p/testcases/inject_randr1.5.c	2020-12-30 00:21:41.142467516 +0200
-@@ -14,7 +14,7 @@
-  */
- #include "all.h"
- 
--#include <ev.h>
-+#include <libev/ev.h>
- #include <fcntl.h>
- #include <getopt.h>
- #include <libgen.h>
-Index: i3-4.20/include/log.h
-===================================================================
---- i3-4.20/include/log.h
-+++ i3-4.20/include/log.h	2021-10-19 10:09:46.108201397 +0200
+diff -uraN i3-4.23/include/log.h omv-i3-4.23/include/log.h
+--- i3-4.23/include/log.h	2023-10-29 09:57:51.000000000 +0100
++++ omv-i3-4.23/include/log.h	2023-11-01 14:23:58.071165439 +0100
 @@ -10,7 +10,7 @@
  #pragma once
  
@@ -107,10 +70,21 @@ Index: i3-4.20/include/log.h
  
  /* We will include libi3.h which define its own version of LOG, ELOG.
   * We want *our* version, so we undef the libi3 one. */
-Index: i3-4.20/src/log.c
-===================================================================
---- i3-4.20/src/log.c
-+++ i3-4.20/src/log.c	2021-10-19 10:10:00.456210721 +0200
+diff -uraN i3-4.23/src/ipc.c omv-i3-4.23/src/ipc.c
+--- i3-4.23/src/ipc.c	2023-10-29 09:57:51.000000000 +0100
++++ omv-i3-4.23/src/ipc.c	2023-11-01 14:22:40.972166860 +0100
+@@ -11,7 +11,7 @@
+ #include "all.h"
+ #include "yajl_utils.h"
+ 
+-#include <ev.h>
++#include <libev/ev.h>
+ #include <fcntl.h>
+ #include <libgen.h>
+ #include <locale.h>
+diff -uraN i3-4.23/src/log.c omv-i3-4.23/src/log.c
+--- i3-4.23/src/log.c	2023-10-29 09:57:51.000000000 +0100
++++ omv-i3-4.23/src/log.c	2023-11-01 14:24:20.250165031 +0100
 @@ -12,7 +12,7 @@
  #include "all.h"
  #include "shmlog.h"
@@ -120,3 +94,27 @@ Index: i3-4.20/src/log.c
  #include <libgen.h>
  #include <sys/socket.h>
  #include <sys/un.h>
+diff -uraN i3-4.23/src/main.c omv-i3-4.23/src/main.c
+--- i3-4.23/src/main.c	2023-10-29 09:57:51.000000000 +0100
++++ omv-i3-4.23/src/main.c	2023-11-01 14:22:55.466166593 +0100
+@@ -10,7 +10,7 @@
+ #include "all.h"
+ #include "shmlog.h"
+ 
+-#include <ev.h>
++#include <libev/ev.h>
+ #include <fcntl.h>
+ #include <getopt.h>
+ #include <libgen.h>
+diff -uraN i3-4.23/testcases/inject_randr1.5.c omv-i3-4.23/testcases/inject_randr1.5.c
+--- i3-4.23/testcases/inject_randr1.5.c	2023-10-29 09:57:51.000000000 +0100
++++ omv-i3-4.23/testcases/inject_randr1.5.c	2023-11-01 14:23:25.560166038 +0100
+@@ -14,7 +14,7 @@
+  */
+ #include "all.h"
+ 
+-#include <ev.h>
++#include <libev/ev.h>
+ #include <fcntl.h>
+ #include <getopt.h>
+ #include <libgen.h>
