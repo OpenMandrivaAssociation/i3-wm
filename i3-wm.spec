@@ -10,7 +10,7 @@ Release:        1
 Summary:        Improved tiling window manager
 License:        BSD
 Group:          System/X11
-URL:            http://i3wm.org/
+URL:            https://i3wm.org/
 
 Source0:        http://i3wm.org/downloads/%{real_name}-%{version}.tar.xz
 Source1:        %{real_name}-logo.svg
