@@ -22,6 +22,18 @@ diff -uraN i3-4.24/i3bar/src/child.c omv-i3-4.24/i3bar/src/child.c
  #include <fcntl.h>
  #include <paths.h>
  #include <signal.h>
+diff -uraN i3-4.24/i3bar/src/ipc.c omv-i3-4.24/i3bar/src/ipc.c
+--- i3-4.24/i3bar/src/ipc.c	2024-11-06 18:26:52.000000000 +0100
++++ omv-i3-4.24/i3bar/src/ipc.c	2024-12-30 18:32:26.114152942 +0100
+@@ -10,7 +10,7 @@
+ #include "common.h"
+ 
+ #include <errno.h>
+-#include <ev.h>
++#include <libev/ev.h>
+ #include <i3/ipc.h>
+ #include <stdint.h>
+ #include <stdlib.h>
 diff -uraN i3-4.24/i3bar/src/main.c omv-i3-4.24/i3bar/src/main.c
 --- i3-4.24/i3bar/src/main.c	2024-11-06 18:26:52.000000000 +0100
 +++ omv-i3-4.24/i3bar/src/main.c	2024-12-30 18:20:55.387922663 +0100
