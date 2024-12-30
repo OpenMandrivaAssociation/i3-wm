@@ -1,6 +1,6 @@
-diff -uraN i3-4.23/i3bar/include/child.h omv-i3-4.23/i3bar/include/child.h
---- i3-4.23/i3bar/include/child.h	2023-10-29 09:57:51.000000000 +0100
-+++ omv-i3-4.23/i3bar/include/child.h	2023-11-01 15:01:10.793124306 +0100
+diff -uraN i3-4.24/i3bar/include/child.h omv-i3-4.24/i3bar/include/child.h
+--- i3-4.24/i3bar/include/child.h	2024-11-06 18:26:52.000000000 +0100
++++ omv-i3-4.24/i3bar/include/child.h	2024-12-30 18:20:28.201246549 +0100
 @@ -11,7 +11,7 @@
  
  #include <config.h>
@@ -10,10 +10,10 @@ diff -uraN i3-4.23/i3bar/include/child.h omv-i3-4.23/i3bar/include/child.h
  
  #define STDIN_CHUNK_SIZE 1024
  
-diff -uraN i3-4.23/i3bar/src/child.c omv-i3-4.23/i3bar/src/child.c
---- i3-4.23/i3bar/src/child.c	2023-10-29 09:57:51.000000000 +0100
-+++ omv-i3-4.23/i3bar/src/child.c	2023-11-01 14:21:05.319168622 +0100
-@@ -13,7 +13,7 @@
+diff -uraN i3-4.24/i3bar/src/child.c omv-i3-4.24/i3bar/src/child.c
+--- i3-4.24/i3bar/src/child.c	2024-11-06 18:26:52.000000000 +0100
++++ omv-i3-4.24/i3bar/src/child.c	2024-12-30 18:20:03.316399011 +0100
+@@ -14,7 +14,7 @@
  #include <ctype.h> /* isspace */
  #include <err.h>
  #include <errno.h>
@@ -22,21 +22,9 @@ diff -uraN i3-4.23/i3bar/src/child.c omv-i3-4.23/i3bar/src/child.c
  #include <fcntl.h>
  #include <paths.h>
  #include <signal.h>
-diff -uraN i3-4.23/i3bar/src/ipc.c omv-i3-4.23/i3bar/src/ipc.c
---- i3-4.23/i3bar/src/ipc.c	2023-10-29 09:57:51.000000000 +0100
-+++ omv-i3-4.23/i3bar/src/ipc.c	2023-11-01 14:21:18.726168375 +0100
-@@ -10,7 +10,7 @@
- #include "common.h"
- 
- #include <errno.h>
--#include <ev.h>
-+#include <libev/ev.h>
- #include <i3/ipc.h>
- #include <stdint.h>
- #include <stdlib.h>
-diff -uraN i3-4.23/i3bar/src/main.c omv-i3-4.23/i3bar/src/main.c
---- i3-4.23/i3bar/src/main.c	2023-10-29 09:57:51.000000000 +0100
-+++ omv-i3-4.23/i3bar/src/main.c	2023-11-01 14:21:30.987168149 +0100
+diff -uraN i3-4.24/i3bar/src/main.c omv-i3-4.24/i3bar/src/main.c
+--- i3-4.24/i3bar/src/main.c	2024-11-06 18:26:52.000000000 +0100
++++ omv-i3-4.24/i3bar/src/main.c	2024-12-30 18:20:55.387922663 +0100
 @@ -7,7 +7,7 @@
   */
  #include "common.h"
@@ -46,9 +34,9 @@ diff -uraN i3-4.23/i3bar/src/main.c omv-i3-4.23/i3bar/src/main.c
  #include <getopt.h>
  #include <glob.h>
  #include <i3/ipc.h>
-diff -uraN i3-4.23/i3bar/src/xcb.c omv-i3-4.23/i3bar/src/xcb.c
---- i3-4.23/i3bar/src/xcb.c	2023-10-29 09:57:51.000000000 +0100
-+++ omv-i3-4.23/i3bar/src/xcb.c	2023-11-01 14:21:47.577167843 +0100
+diff -uraN i3-4.24/i3bar/src/xcb.c omv-i3-4.24/i3bar/src/xcb.c
+--- i3-4.24/i3bar/src/xcb.c	2024-11-06 18:26:52.000000000 +0100
++++ omv-i3-4.24/i3bar/src/xcb.c	2024-12-30 18:21:12.102507627 +0100
 @@ -10,7 +10,7 @@
  #include "common.h"
  
@@ -56,11 +44,11 @@ diff -uraN i3-4.23/i3bar/src/xcb.c omv-i3-4.23/i3bar/src/xcb.c
 -#include <ev.h>
 +#include <libev/ev.h>
  #include <i3/ipc.h>
+ #include <stddef.h>
  #include <stdlib.h>
- #include <string.h>
-diff -uraN i3-4.23/include/ipc.h omv-i3-4.23/include/ipc.h
---- i3-4.23/include/ipc.h	2023-10-29 09:57:51.000000000 +0100
-+++ omv-i3-4.23/include/ipc.h	2023-11-01 14:22:20.968167228 +0100
+diff -uraN i3-4.24/include/ipc.h omv-i3-4.24/include/ipc.h
+--- i3-4.24/include/ipc.h	2024-11-06 18:26:52.000000000 +0100
++++ omv-i3-4.24/include/ipc.h	2024-12-30 18:21:51.969172478 +0100
 @@ -11,7 +11,7 @@
  
  #include <config.h>
@@ -70,9 +58,9 @@ diff -uraN i3-4.23/include/ipc.h omv-i3-4.23/include/ipc.h
  #include <yajl/yajl_gen.h>
  #include <yajl/yajl_parse.h>
  
-diff -uraN i3-4.23/include/log.h omv-i3-4.23/include/log.h
---- i3-4.23/include/log.h	2023-10-29 09:57:51.000000000 +0100
-+++ omv-i3-4.23/include/log.h	2023-11-01 14:23:58.071165439 +0100
+diff -uraN i3-4.24/include/log.h omv-i3-4.24/include/log.h
+--- i3-4.24/include/log.h	2024-11-06 18:26:52.000000000 +0100
++++ omv-i3-4.24/include/log.h	2024-12-30 18:22:07.534884865 +0100
 @@ -10,7 +10,7 @@
  #pragma once
  
@@ -82,9 +70,9 @@ diff -uraN i3-4.23/include/log.h omv-i3-4.23/include/log.h
  
  /* We will include libi3.h which define its own version of LOG, ELOG.
   * We want *our* version, so we undef the libi3 one. */
-diff -uraN i3-4.23/src/ipc.c omv-i3-4.23/src/ipc.c
---- i3-4.23/src/ipc.c	2023-10-29 09:57:51.000000000 +0100
-+++ omv-i3-4.23/src/ipc.c	2023-11-01 14:22:40.972166860 +0100
+diff -uraN i3-4.24/src/ipc.c omv-i3-4.24/src/ipc.c
+--- i3-4.24/src/ipc.c	2024-11-06 18:26:52.000000000 +0100
++++ omv-i3-4.24/src/ipc.c	2024-12-30 18:22:33.496754514 +0100
 @@ -11,7 +11,7 @@
  #include "all.h"
  #include "yajl_utils.h"
@@ -94,9 +82,9 @@ diff -uraN i3-4.23/src/ipc.c omv-i3-4.23/src/ipc.c
  #include <fcntl.h>
  #include <libgen.h>
  #include <locale.h>
-diff -uraN i3-4.23/src/log.c omv-i3-4.23/src/log.c
---- i3-4.23/src/log.c	2023-10-29 09:57:51.000000000 +0100
-+++ omv-i3-4.23/src/log.c	2023-11-01 14:24:20.250165031 +0100
+diff -uraN i3-4.24/src/log.c omv-i3-4.24/src/log.c
+--- i3-4.24/src/log.c	2024-11-06 18:26:52.000000000 +0100
++++ omv-i3-4.24/src/log.c	2024-12-30 18:22:47.013653593 +0100
 @@ -12,7 +12,7 @@
  #include "all.h"
  #include "shmlog.h"
@@ -106,9 +94,9 @@ diff -uraN i3-4.23/src/log.c omv-i3-4.23/src/log.c
  #include <libgen.h>
  #include <sys/socket.h>
  #include <sys/un.h>
-diff -uraN i3-4.23/src/main.c omv-i3-4.23/src/main.c
---- i3-4.23/src/main.c	2023-10-29 09:57:51.000000000 +0100
-+++ omv-i3-4.23/src/main.c	2023-11-01 14:22:55.466166593 +0100
+diff -uraN i3-4.24/src/main.c omv-i3-4.24/src/main.c
+--- i3-4.24/src/main.c	2024-11-06 18:26:52.000000000 +0100
++++ omv-i3-4.24/src/main.c	2024-12-30 18:23:10.895721707 +0100
 @@ -10,7 +10,7 @@
  #include "all.h"
  #include "shmlog.h"
@@ -118,9 +106,9 @@ diff -uraN i3-4.23/src/main.c omv-i3-4.23/src/main.c
  #include <fcntl.h>
  #include <getopt.h>
  #include <libgen.h>
-diff -uraN i3-4.23/testcases/inject_randr1.5.c omv-i3-4.23/testcases/inject_randr1.5.c
---- i3-4.23/testcases/inject_randr1.5.c	2023-10-29 09:57:51.000000000 +0100
-+++ omv-i3-4.23/testcases/inject_randr1.5.c	2023-11-01 14:23:25.560166038 +0100
+diff -uraN i3-4.24/testcases/inject_randr1.5.c omv-i3-4.24/testcases/inject_randr1.5.c
+--- i3-4.24/testcases/inject_randr1.5.c	2024-11-06 18:26:52.000000000 +0100
++++ omv-i3-4.24/testcases/inject_randr1.5.c	2024-12-30 18:23:33.716890820 +0100
 @@ -14,7 +14,7 @@
   */
  #include "all.h"
