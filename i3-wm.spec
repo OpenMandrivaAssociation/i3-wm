@@ -55,7 +55,7 @@ Recommends:     dmenu
 Recommends:     i3-doc
 Recommends:	i3status
 
-Provices:	i3 = %{EVRD}
+Provides:	i3 = %{EVRD}
 
 %description
 i3 is a tiling window manager, completely written from scratch.
