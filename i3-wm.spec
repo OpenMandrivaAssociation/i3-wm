@@ -6,7 +6,7 @@
 
 Name:           i3-wm
 Version:        4.24
-Release:        1
+Release:        2
 Summary:        Improved tiling window manager
 License:        BSD
 Group:          System/X11
@@ -54,6 +54,8 @@ Requires:       x11-apps
 Recommends:     dmenu
 Recommends:     i3-doc
 Recommends:	i3status
+
+Provices:	i3 = %{EVRD}
 
 %description
 i3 is a tiling window manager, completely written from scratch.
