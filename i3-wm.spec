@@ -1,12 +1,10 @@
 %global __requires_exclude perl\\(AnyEvent::I3\\)
 
 %global real_name i3
-%global bugfix_release bf2
-%global upstream_version 4.18
 
 Name:           i3-wm
 Version:        4.24
-Release:        2
+Release:        3
 Summary:        Improved tiling window manager
 License:        BSD
 Group:          System/X11
