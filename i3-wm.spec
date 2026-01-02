@@ -3,8 +3,8 @@
 %global real_name i3
 
 Name:           i3-wm
-Version:        4.24
-Release:        3
+Version:        4.25
+Release:        1
 Summary:        Improved tiling window manager
 License:        BSD
 Group:          System/X11
@@ -87,9 +87,6 @@ Asciidoc and doxygen documentations for i3.
 
 %meson_build
 
-doxygen pseudo-doc.doxygen
-mv pseudo-doc/html pseudo-doc/doxygen
-
 %install
 %meson_install
 
@@ -123,7 +120,7 @@ fi
 
 %files doc
 %defattr(-,root,root,-)
-%doc docs/*.{html,png} pseudo-doc/doxygen/
+%doc docs/*.{html,png}
 
 
 %changelog
