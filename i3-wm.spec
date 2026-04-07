@@ -3,7 +3,7 @@
 %global real_name i3
 
 Name:           i3-wm
-Version:        4.25
+Version:        4.25.1
 Release:        1
 Summary:        Improved tiling window manager
 License:        BSD
